@@ -1,5 +1,7 @@
 package com.nelioalves.cursomc.services;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,8 +15,8 @@ public class PedidoService {
 	@Autowired
 	private PedidoRepository repo;
 	
-	public Pedido find(Integer id){
-		Pedido obj = repo.findOne(id);
+	public Optional<Pedido> find(Integer id){
+		Optional<Pedido> obj = repo.findById(id);
 		if(obj==null) {
 			throw new ObjectNotFoundException("Objeto não encontrado! Id:"+ id +", Tipo:"+ Pedido.class.getName());
 		}
